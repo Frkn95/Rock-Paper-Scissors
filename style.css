@@ -1,2 +1,39 @@
 /* Icon by <a href="https://freeicons.io/profile/14783">PlutoPixel</a> on <a href="https://freeicons.io">freeicons.io</a> */
-                                
+    
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.header{
+    display: flex;
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.scoreboard{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.button-box-rock {
+    
+}
