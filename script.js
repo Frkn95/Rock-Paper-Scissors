@@ -1,32 +1,53 @@
-const arr = ["rock", "paper", "scissors"]
+const rockBtn = document.querySelector(".rock")
+const paperBtn = document.querySelector(".paper")
+const scissorsBtn = document.querySelector(".scissors")
+
+rockBtn.addEventListener("click", () => handleClick("rock"))
+paperBtn.addEventListener("click", () => handleClick("paper"))
+scissorsBtn.addEventListener("click", () => handleClick("scissors"))
 
 let playerPoints = 0;
 let computerPoints = 0;
-let compOutput;
+
 
 function getComputerChoice(){
-    let compSelected = Math.floor(Math.random() * 3);
-    compOutput = arr[compSelected]
+    let randomNumber = Math.floor(Math.random() * 3);
+    switch (randomNumber){
+        case 0:
+            return "rock"
+        case 1:
+            return "paper"
+        case 2: 
+            return "scissors"
+    }
+}
+function getPlayerInput(){
+    signs.forEach(button => {
+        button.addEventListener("click",(e) => {
+            playerInput = e.target.className
+            console.log(playerInput)
+        })
+    })
 }
 
-function game(){
-    let userInput = prompt("Welcome to Rock-Paper-Scissors, choose One and write it in the field below! Watch out for mistake while writing").toLowerCase()
-    getComputerChoice();
+function game(playerInput,compOutput){
+    
 
-    if((userInput === "rock" && compOutput === "scissors") || (userInput === "paper" && compOutput === "Rock") || (userInput === "Scissors" && compOutput === "Paper")){
+    if((playerInput === "rock" && compOutput === "scissors") || (playerInput === "paper" && compOutput === "Rock") || (playerInput === "Scissors" && compOutput === "Paper")){
         playerPoints ++
         console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You win! ${userInput} beats ${compOutput}`
-    }else if( userInput === compOutput){
+        return `You win! ${playerInput} beats ${compOutput}`
+    }else if( playerInput === compOutput){
         return "Tie";
-    }else{
+    }else if (playerInput !== compOutput){
         computerPoints++
         console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You lose! ${compOutput} beats ${userInput}`;
+        return `You lose! ${compOutput} beats ${playerInput}`;
     }
 }
 
-for (let i = 0; i <= 5; i++) {
-   game()
+function handleClick(playerInput){
+    const compOutput = getComputerChoice();
+    game(playerInput,compOutput)
 }
 
