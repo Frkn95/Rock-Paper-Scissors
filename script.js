@@ -21,33 +21,23 @@ function getComputerChoice(){
             return "scissors"
     }
 }
-function getPlayerInput(){
-    signs.forEach(button => {
-        button.addEventListener("click",(e) => {
-            playerInput = e.target.className
-            console.log(playerInput)
-        })
-    })
-}
 
-function game(playerInput,compOutput){
-    
-
-    if((playerInput === "rock" && compOutput === "scissors") || (playerInput === "paper" && compOutput === "Rock") || (playerInput === "Scissors" && compOutput === "Paper")){
+function playRound(playerSelection,compOutput){
+    if((playerSelection === "rock" && compOutput === "scissors") || (playerSelection === "paper" && compOutput === "Rock") || (playerSelection === "Scissors" && compOutput === "Paper")){
         playerPoints ++
         console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You win! ${playerInput} beats ${compOutput}`
-    }else if( playerInput === compOutput){
+        return `You win! ${playerSelection} beats ${compOutput}`
+    }else if( playerSelection === compOutput){
         return "Tie";
-    }else if (playerInput !== compOutput){
+    }else{
         computerPoints++
         console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You lose! ${compOutput} beats ${playerInput}`;
+        return `You lose! ${compOutput} beats ${playerSelection}`;
     }
 }
 
-function handleClick(playerInput){
+function handleClick(playerSelection){
     const compOutput = getComputerChoice();
-    game(playerInput,compOutput)
+    playRound(playerSelection,compOutput)
 }
 
