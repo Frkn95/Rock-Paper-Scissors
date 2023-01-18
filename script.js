@@ -1,43 +1,77 @@
 const rockBtn = document.querySelector(".rock")
 const paperBtn = document.querySelector(".paper")
 const scissorsBtn = document.querySelector(".scissors")
-
-rockBtn.addEventListener("click", () => handleClick("rock"))
-paperBtn.addEventListener("click", () => handleClick("paper"))
-scissorsBtn.addEventListener("click", () => handleClick("scissors"))
+const playerScoreText = document.querySelector(".player")
+const compScoreText = document.querySelector(".computer")
+const infoText = document.querySelector(".info-text")
 
 let playerPoints = 0;
 let computerPoints = 0;
+
+//EVENT LISTENER
+rockBtn.addEventListener("mousedown", () => {
+    if (playerPoints >= 5 || computerPoints >= 5){
+        return;
+    }
+    handleClick("Rock")
+})
+paperBtn.addEventListener("mousedown", () => {
+    if (playerPoints >= 5 || computerPoints >= 5){
+        return;
+    }
+    handleClick("Paper")
+})
+scissorsBtn.addEventListener("mousedown", () => {
+    if (playerPoints >= 5 || computerPoints >= 5){
+        return;
+    }   
+    handleClick("Scissors")
+})
 
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber){
         case 0:
-            return "rock"
+            return "Rock"
         case 1:
-            return "paper"
+            return "Paper"
         case 2: 
-            return "scissors"
+            return "Scissors"
     }
 }
 
+//GAME LOGIC
 function playRound(playerSelection,compOutput){
-    if((playerSelection === "rock" && compOutput === "scissors") || (playerSelection === "paper" && compOutput === "Rock") || (playerSelection === "Scissors" && compOutput === "Paper")){
-        playerPoints ++
-        console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You win! ${playerSelection} beats ${compOutput}`
-    }else if( playerSelection === compOutput){
-        return "Tie";
-    }else{
-        computerPoints++
-        console.log("Player: ",playerPoints, "Computer: ", computerPoints)
-        return `You lose! ${compOutput} beats ${playerSelection}`;
+    if (playerPoints <= 5 && computerPoints <= 5){
+        if((playerSelection === "Rock" && compOutput === "Scissors") || (playerSelection === "Paper" && compOutput === "Rock") || (playerSelection === "Scissors" && compOutput === "Paper")){
+            playerPoints++;
+            playerScoreText.textContent = playerPoints
+            infoText.textContent = `You win! ${playerSelection} beats ${compOutput}`
+        }else if( playerSelection === compOutput){
+            logText = "Tie";
+            infoText.textContent = "Tie"
+        }else if((compOutput === "Paper" && playerSelection === "Rock") || (playerSelection === "Paper" && compOutput === "Scissors") || (playerSelection === "Scissors" && compOutput === "Rock")){
+            computerPoints++
+            compScoreText.textContent = computerPoints
+            infoText.textContent = `You lose! ${compOutput} beats ${playerSelection}`;
+        }
+    }   
+}
+
+// Utility
+function scoreChecker(playerPoints,computerPoints){
+    if (playerPoints >= 5 && computerPoints <=5 ){
+        console.log("You win")
+    }else if(playerPoints <= 5 && computerPoints >=5 ){
+        console.log("You lose")
     }
 }
 
 function handleClick(playerSelection){
-    const compOutput = getComputerChoice();
+    let compOutput = getComputerChoice();
     playRound(playerSelection,compOutput)
+    scoreChecker(playerPoints,computerPoints)
 }
+
 
