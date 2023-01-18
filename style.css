@@ -19,6 +19,19 @@ body{
 
 /*TEXT & HEADER*/
 
+.info-text-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-text{
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    margin: 15px;
+    color: black
+}
+
 .header{
     display: flex;
     justify-content: center;
@@ -29,12 +42,18 @@ body{
 .header h1{
     font: 2.5em sans-serif;
     padding: 50px;
+    color: rgb(240, 95, 38);
 }
 
 p, span{
     font-size: 1.1rem;
     font-family: sans-serif;
     padding: 5px;
+}
+
+span{
+    color: rgb(255, 1, 1);
+    font-size: 1.4rem;
 }
 
 .scoreboard{
@@ -66,7 +85,6 @@ button{
     width: 150px;
     height: 150px;
     border: none; 
-    transition: 0.2s all;
 }
 
 button:hover{
