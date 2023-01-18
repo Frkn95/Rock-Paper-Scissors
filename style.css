@@ -1,4 +1,4 @@
-/* Icon by <a href="https://freeicons.io/profile/14783">PlutoPixel</a> on <a href="https://freeicons.io">freeicons.io</a> */
+
     
 *{
     box-sizing: border-box;
@@ -113,7 +113,27 @@ button.scissors{
     background-size: 80%;
 }
 
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 5px;
+    padding-top: 40px;
+}
 
+.footer p{
+    font-size: 10px;
+}
+
+.footer p a {
+    text-decoration: none;
+    color: black;
+}
 
 
 
